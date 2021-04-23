@@ -18,4 +18,28 @@ router.get("/stats", (req, res) => {
     }
 });
 
+
+// router.route("/sum").get(function (req, res) {
+//     Workout.aggregate(
+//         [
+//             {
+//                 $group: {
+//                     _id: "$_id",
+                    
+//                     totalDuration: {
+//                         $sum: "$exercises.duration"
+//                     }
+//                 }
+//             }
+//         ],
+//         function (err, result) {
+//             if (err) {
+//                 res.send(err);
+//             } else {
+//                 res.json(result);
+//             }
+//         }
+//     );
+// });
+
 module.exports = router;

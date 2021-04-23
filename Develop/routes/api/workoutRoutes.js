@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Workout } = require('../../models');
 
-router.post('/', async ({body}, res) => {
-    Workout.create({body})
+router.post('/', async ({ body }, res) => {
+    Workout.create({ body })
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -34,6 +34,7 @@ router.get("/", (req, res) => {
 
 router.get("/range", (req, res) => {
     Workout.find()
+        .limit(7)
         .then(dbWorkout => {
             res.json(dbWorkout);
         })

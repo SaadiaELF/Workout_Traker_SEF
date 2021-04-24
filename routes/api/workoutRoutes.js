@@ -22,7 +22,13 @@ router.put('/:id', async ({ body, params }, res) => {
 });
 
 router.get("/", (req, res) => {
-    Workout.find({})
+    Workout.aggregate([{
+        $addFields: {
+            totalDuration: {
+                $sum: "$exercises.duration"
+            }
+        }
+    }])
         .sort({ date: -1 })
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -33,7 +39,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/range", (req, res) => {
-    Workout.find()
+    Workout.aggregate([{
+        $addFields: {
+            totalDuration: {
+                $sum: "$exercises.duration"
+            }
+        }
+    }])
+        .sort({ date: -1 })
         .limit(7)
         .then(dbWorkout => {
             res.json(dbWorkout);

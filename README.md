@@ -6,7 +6,6 @@ Table of content :
 * [Method](#Method)
 * [Node.js](#Nodejs)
 * [JavaScript](#JavaScript) 
-* [Handlebars.js](#Handlebarsjs) 
 * [Demonstration](#Demonstration)
 * [URLs](#URLs) 
 

@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Workout } = require('../../models');
 
+// The `/api/workouts` endpoint
+
+// Create new workout
 router.post('/', async ({ body }, res) => {
     Workout.create({ body })
         .then(dbWorkout => {
@@ -11,6 +14,8 @@ router.post('/', async ({ body }, res) => {
         });
 });
 
+
+// Update workout
 router.put('/:id', async ({ body, params }, res) => {
     Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } })
         .then(dbWorkout => {
@@ -21,6 +26,7 @@ router.put('/:id', async ({ body, params }, res) => {
         });
 });
 
+// Adding TotalDuration field
 router.get("/", (req, res) => {
     Workout.aggregate([{
         $addFields: {
@@ -38,6 +44,7 @@ router.get("/", (req, res) => {
         });
 });
 
+// Adding TotalDuration field to the last 7 workouts
 router.get("/range", (req, res) => {
     Workout.aggregate([{
         $addFields: {

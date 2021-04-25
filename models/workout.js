@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// Creating a new schema 
 const workoutSchema = new Schema([
   {
     day: {
@@ -37,6 +38,7 @@ const workoutSchema = new Schema([
     ]
   }]);
 
+  // Creating a model from the schema 
 const Workout = mongoose.model("Workout", workoutSchema);
 
 module.exports = Workout;
